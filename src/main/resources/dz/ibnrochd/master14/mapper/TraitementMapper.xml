@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "C:\Users\user\git\sb_002\mybatis-3-mapper .dtd" >
+<mapper namespace="dz.ibnrochd.master14.mapper.TraitementMapper" >
+    <resultMap id="ResultMap" type="dz.ibnrochd.master14.model.Traitement" >
+        <id column="id" property="id"  />
+        <result column="nom" property="nom" />
+        <collection property="ligne_consultation" ofType="dz.ibnrochd.master14.model.LigneConsultation"
+            column="id" select="selectLigneConsultations" />
+    </resultMap>
+    
+    <select id="selectAllTraitement" resultMap="ResultMap">
+        SELECT * FROM cabinet.traitement
+    </select>
+    
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <!-- Configuration des mappers -->
+    <mappers>
+        <mapper resource="dz/ibnrochd/master14/mapper/PatientMapper.xml"/>
+        <mapper resource="dz/ibnrochd/master14/mapper/ConsultationMapper.xml"/>
+        <mapper resource="dz/ibnrochd/master14/mapper/RendezVousMapper.xml"/>
+        <mapper resource="dz/ibnrochd/master14/mapper/TraitementMapper.xml"/>
+        <mapper resource="dz/ibnrochd/master14/mapper/LigneConsultationMapper.xml"/>
+        <!-- Ajoutez ici d'autres mappers si nécessaire -->
+    </mappers>
+
+    <!-- Configuration de la source de données -->
+	<environments default="development">
+	    <environment id="development">
+	        <transactionManager type="JDBC"/>
+	        <dataSource type="POOLED">
+	            <property name="driver" value="${spring.datasource.driver-class-name}"/>
+	            <property name="url" value="${spring.datasource.url}"/>
+	            <property name="username" value="${spring.datasource.username}"/>
+	            <property name="password" value="${spring.datasource.password}"/>
+	        </dataSource>
+	    </environment>
+	</environments>
+
+    <!-- Autres configurations MyBatis -->
+</configuration>
+

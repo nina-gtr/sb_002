@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "C:\Users\user\git\sb_002\mybatis-3-mapper .dtd" >
+<mapper namespace="dz.ibnrochd.master14.mapper.PatientMapper" >
+    <resultMap id="ResultMap" type="dz.ibnrochd.master14.model.Patient" >
+        <id column="id" property="id"  />
+        <result column="nom" property="nom" />
+        <result property="prenom" column="prenom"/>
+        <result property="sexe" column="sexe"/>
+        <result property="dateNaissance" column="date_naissance"/>
+        <result property="numeroTelephone" column="numero_telephone"/>
+        <result property="adresse" column="adresse"/>
+        <!--<collection property="consultation" ofType="dz.ibnrochd.master14.model.Consultation"
+            column="id" select="selectConsultationsDuPatient" />
+        <collection property="rendez_vous" ofType="dz.ibnrochd.master14.model.RendezVous"
+            column="id" select="selectConsultationsDuPatient" />-->
+    </resultMap>
+ 
+    <!--<select id="findPatientWithConsultationsById" resultMap="ResultMap" parameterType="java.lang.Integer" >
+        SELECT * FROM cabinet.patient WHERE id = #{id}
+    </select>-->
+    
+    <select id="selectAllPatient" resultMap="ResultMap">
+        SELECT * FROM cabinet.patient
+    </select>
+    
+    <select id="RechParNom" resultMap="ResultMap">
+    	SELECT * FROM cabinet.patient WHERE nom = #{nom}
+	</select>
+	
+	<insert id="ajouterPatient" parameterType="dz.ibnrochd.master14.model.Patient" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO cabinet.patient (nom, prenom, sexe, date_naissance, numero_telephone, adresse) 
+        VALUES (#{nom}, #{prenom}, #{sexe}, #{dateNaissance}, #{numeroTelephone}, #{adresse})
+    </insert>
+ 
+    
+</mapper>
+

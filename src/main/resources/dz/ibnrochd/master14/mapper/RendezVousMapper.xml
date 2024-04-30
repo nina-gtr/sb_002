@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "C:\Users\user\git\sb_002\mybatis-3-mapper .dtd" >
+<mapper namespace="dz.ibnrochd.master14.mapper.RendezVousMapper" >
+    <resultMap id="ResultMap" type="dz.ibnrochd.master14.model.RendezVous" >
+        <id column="id" property="id"  />
+        <result column="dateRdv" property="date_rdv" />
+        <!--<association property="patient" column="id" javaType="dz.ibnrochd.master14.model.Patient"
+            select="findPatientById"/>-->
+    </resultMap>
+    
+    <select id="selectAllRendezVous" resultMap="ResultMap">
+        SELECT * FROM cabinet.rendez_vous
+    </select>
+    
+</mapper>

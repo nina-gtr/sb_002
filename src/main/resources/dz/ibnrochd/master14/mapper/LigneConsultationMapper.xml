@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "C:\Users\user\git\sb_002\mybatis-3-mapper .dtd" >
+<mapper namespace="dz.ibnrochd.master14.mapper.LigneConsultationMapper" >
+    <resultMap id="ResultMap" type="dz.ibnrochd.master14.model.LigneConsultation" >
+        <id column="id" property="id"  />
+        <result column="posologie" property="posologie" />
+        <result column="unite_temps" property="unite_temps" />
+        <result column="quantite" property="quantite" />
+        <result column="nom" property="traitement.nom"/>
+        <!--  <association property="traitement" column="id" javaType="dz.ibnrochd.master14.model.Traitement"
+            select="findTraitementById"/>-->
+        <association property="traitement" javaType="dz.ibnrochd.master14.model.Traitement">
+            <id column="id" property="id"/>
+            <result column="nom" property="nom"/>
+        </association>
+    </resultMap>
+    
+    <select id="selectAllLigne_Consultation" resultMap="ResultMap">
+        SELECT * FROM cabinet.ligne_consultation
+    </select>
+    
+   <!-- <select id="findTraitementById" parameterType="java.lang.Integer" resultType="dz.ibnrochd.master14.model.Traitement">
+        SELECT * FROM cabinet.traitement WHERE id = #{id}
+    </select>-->
+    
+    <select id="selectAllLigneConsultation" resultMap="ResultMap">
+        SELECT lc.id, lc.posologie, lc.unite_temps, lc.quantite, t.id as id, t.nom
+        FROM cabinet.ligne_consultation lc
+        LEFT JOIN cabinet.traitement t ON lc.id = t.id
+    </select>
+    
+</mapper>

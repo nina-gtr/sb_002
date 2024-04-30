@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "C:\Users\user\git\sb_002\mybatis-3-mapper .dtd" >
+<mapper namespace="dz.ibnrochd.master14.mapper.ConsultationMapper" >
+    <resultMap id="ResultMap" type="dz.ibnrochd.master14.model.Consultation" >
+        <id column="id" property="id"  />
+        <result column="motif" property="motif"  />
+        <result column="dateconsult" property="date_consultation" />
+        <!--<collection property="ligne_consultation" ofType="dz.ibnrochd.master14.model.LigneConsultation"
+            column="id" select="selectLigneConsultations" />-->
+    </resultMap>
+    
+    <select id="selectAllConsultation" resultMap="ResultMap">
+        SELECT * FROM cabinet.consultation
+    </select>
+    
+    <select id="findConsultationsById" resultMap="ResultMap" parameterType="java.lang.Integer" >
+        SELECT * FROM cabinet.consultation WHERE id = #{id}
+    </select>
+    
+</mapper>
