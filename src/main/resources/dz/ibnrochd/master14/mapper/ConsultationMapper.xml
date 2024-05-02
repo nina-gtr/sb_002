@@ -5,16 +5,52 @@
         <id column="id" property="id"  />
         <result column="motif" property="motif"  />
         <result column="dateconsult" property="date_consultation" />
+        <result column="nom" property="traitement.nom"/>
         <!--<collection property="ligne_consultation" ofType="dz.ibnrochd.master14.model.LigneConsultation"
             column="id" select="selectLigneConsultations" />-->
+        <association property="patient" javaType="dz.ibnrochd.master14.model.Patient">
+            <id column="id" property="id"  />
+	        <result column="nom" property="nom" />
+	        <result property="prenom" column="prenom"/>
+	        <result property="sexe" column="sexe"/>
+	        <result property="dateNaissance" column="date_naissance"/>
+	        <result property="numeroTelephone" column="numero_telephone"/>
+	        <result property="adresse" column="adresse"/>
+        </association>
     </resultMap>
     
-    <select id="selectAllConsultation" resultMap="ResultMap">
-        SELECT * FROM cabinet.consultation
+    <insert id="creerConsultation" parameterType="dz.ibnrochd.master14.model.Consultation" useGeneratedKeys="true" keyProperty="id">
+	    INSERT INTO cabinet.consultation(motif, date_consultation, id_patient)
+		VALUES (#{motif}, #{dateconsult}, #{patient.id})
+    </insert>
+    
+    <select id="lireConsultation" resultMap="ResultMap">
+        SELECT * FROM cabinet.consultation 
+        WHERE id = #{id}
     </select>
+    
+    <update id="mettreAjourConsultation" parameterType="dz.ibnrochd.master14.model.Consultation" >
+	    UPDATE cabinet.consultation
+		SET motif=#{motif}, date_consultation=#{dateconsult}, id_patient=#{patient.id}
+		WHERE id = #{id}
+    </update>
+    
+    <delete id="supprimerConsultation" parameterType="java.lang.Integer">
+	    DELETE FROM cabinet.consultation
+		WHERE id = #{id}
+    </delete>
     
     <select id="findConsultationsById" resultMap="ResultMap" parameterType="java.lang.Integer" >
         SELECT * FROM cabinet.consultation WHERE id = #{id}
     </select>
+    
+    <select id="PatientId" resultMap="ResultMap">
+        SELECT * FROM cabinet.consultation
+        WHERE id_patient = #{patient_id}
+    </select>
+    
+    
+    
+    
     
 </mapper>

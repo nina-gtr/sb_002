@@ -1,15 +1,16 @@
 package dz.ibnrochd.master14.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class RendezVous implements Serializable {
 
 	private static final long serialVersionUID = -7275578697948165342L;
 
     private int id;
-    private Date dateRdv;
-    private Patient patient;
+    private Timestamp dateRdv;
+    
+	private Patient patient;
 
     //////////////////////////////////////////////
     
@@ -17,7 +18,7 @@ public class RendezVous implements Serializable {
 		
 	}
 
-	public RendezVous(int id, Date dateRdv, Patient patient) {
+	public RendezVous(int id, Timestamp dateRdv, Patient patient) {
 		super();
 		this.id = id;
 		this.dateRdv = dateRdv;
@@ -33,15 +34,15 @@ public class RendezVous implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public Date getDateRdv() {
+	
+	public Timestamp getDateRdv() {
 		return dateRdv;
 	}
 
-	public void setDateRdv(Date dateRdv) {
+	public void setDateRdv(Timestamp dateRdv) {
 		this.dateRdv = dateRdv;
 	}
-
+	
 	public Patient getPatient() {
 		return patient;
 	}

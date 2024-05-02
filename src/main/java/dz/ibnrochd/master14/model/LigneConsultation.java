@@ -10,6 +10,7 @@ public class LigneConsultation implements Serializable {
 	
 	private int id;
 	Consultation consultation;
+
 	Traitement traitement;
 	
 	private String posologie;
@@ -60,6 +61,13 @@ public class LigneConsultation implements Serializable {
 
 	public void setTraitement(Traitement traitement) {
 		this.traitement = traitement;
+	}
+	public Consultation getConsultation() {
+		return consultation;
+	}
+
+	public void setConsultation(Consultation consultation) {
+		this.consultation = consultation;
 	}
     
 }

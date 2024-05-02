@@ -18,19 +18,32 @@
     <!--<select id="findPatientWithConsultationsById" resultMap="ResultMap" parameterType="java.lang.Integer" >
         SELECT * FROM cabinet.patient WHERE id = #{id}
     </select>-->
+    <insert id="creerPatient" parameterType="dz.ibnrochd.master14.model.Patient" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO cabinet.patient (nom, prenom, sexe, date_naissance, numero_telephone, adresse) 
+        VALUES (#{nom}, #{prenom}, #{sexe}, #{dateNaissance}, #{numeroTelephone}, #{adresse})
+    </insert>
     
-    <select id="selectAllPatient" resultMap="ResultMap">
+    <select id="lirePatient" resultMap="ResultMap">
         SELECT * FROM cabinet.patient
+        WHERE id = #{id}
     </select>
+        
+    <update id="mettreAjourPatient" parameterType="dz.ibnrochd.master14.model.Patient">
+	    UPDATE cabinet.patient
+		SET nom=#{nom}, prenom=#{prenom}, sexe=#{sexe}, date_naissance=#{dateNaissance}, numero_telephone=#{numeroTelephone}, adresse=#{adresse}
+	    WHERE id = #{id}
+    </update>
+    
+    <delete id="supprimerPatient" parameterType="java.lang.Integer">
+	    DELETE FROM cabinet.patient
+		WHERE id = #{id}
+    </delete>
     
     <select id="RechParNom" resultMap="ResultMap">
     	SELECT * FROM cabinet.patient WHERE nom = #{nom}
 	</select>
 	
-	<insert id="ajouterPatient" parameterType="dz.ibnrochd.master14.model.Patient" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO cabinet.patient (nom, prenom, sexe, date_naissance, numero_telephone, adresse) 
-        VALUES (#{nom}, #{prenom}, #{sexe}, #{dateNaissance}, #{numeroTelephone}, #{adresse})
-    </insert>
+
  
     
 </mapper>

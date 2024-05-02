@@ -1,7 +1,7 @@
 package dz.ibnrochd.master14.model;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 

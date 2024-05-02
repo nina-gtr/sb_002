@@ -37,11 +37,24 @@ public class PatientService {
             }
         }
     }
-    
-   
-    public void NewPatient(Patient patient) {
-        patientMapper.ajouterPatient(patient);
+        
+    public void CreerPatient(Patient patient) {
+    	patientMapper.creerPatient(patient);
         System.out.println("Un nouveau patient a été ajouté avec succès !!!");
-    }
+	}
+	
+	public Patient LirePatient(int id) {
+		return patientMapper.lirePatient(id);
+	}
+	
+	public void MettreAjourPatient(Patient patient) {
+		patientMapper.mettreAjourPatient(patient);
+		System.out.println("Le patient est mis à jour avec succès !!!");
+	}
+	
+	public void SupprimerPatient(int id) {
+		patientMapper.supprimerPatient(id);
+		System.out.println("Patient supprimé avec succès !!!");
+	}
     
 }

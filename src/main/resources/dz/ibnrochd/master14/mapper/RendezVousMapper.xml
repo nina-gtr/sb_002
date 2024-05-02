@@ -6,10 +6,41 @@
         <result column="dateRdv" property="date_rdv" />
         <!--<association property="patient" column="id" javaType="dz.ibnrochd.master14.model.Patient"
             select="findPatientById"/>-->
+        <association property="patient" javaType="dz.ibnrochd.master14.model.Patient">
+            <id column="id" property="id"  />
+	        <result column="nom" property="nom" />
+	        <result property="prenom" column="prenom"/>
+	        <result property="sexe" column="sexe"/>
+	        <result property="dateNaissance" column="date_naissance"/>
+	        <result property="numeroTelephone" column="numero_telephone"/>
+	        <result property="adresse" column="adresse"/>
+        </association>    
     </resultMap>
     
-    <select id="selectAllRendezVous" resultMap="ResultMap">
+    <insert id="creerRendezVous" parameterType="dz.ibnrochd.master14.model.RendezVous" useGeneratedKeys="true" keyProperty="id">
+	    INSERT INTO cabinet.rendez_vous(date_rdv, id_patient)
+		VALUES (#{dateRdv}, #{patient.id})
+    </insert>
+    
+    <select id="lireRendezVous" resultMap="ResultMap">
         SELECT * FROM cabinet.rendez_vous
+        WHERE id = #{id}
+    </select>
+    
+    <update id="mettreAjourRendezVous" parameterType="dz.ibnrochd.master14.model.RendezVous">
+	    UPDATE cabinet.rendez_vous
+		SET date_rdv=#{dateRdv}, id_patient=#{patient.id}
+		WHERE id = #{id}
+    </update>
+    
+    <delete id="supprimerRendezVous" parameterType="java.lang.Integer">
+	    DELETE FROM cabinet.rendez_vous
+		WHERE id = #{id}
+    </delete>
+    
+    <select id="PatientId" resultMap="ResultMap">
+        SELECT * FROM cabinet.rendez_vous
+        WHERE id_patient = #{patient_id}
     </select>
     
 </mapper>

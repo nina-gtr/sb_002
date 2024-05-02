@@ -40,4 +40,28 @@ public class ConsultationService {
             }
         }
     }
+	
+	public void CreerConsultation(Consultation consultation) {
+		consultationMapper.creerConsultation(consultation);
+        System.out.println("Consultation ajoutée avec succès !!!");
+	}
+	
+	public Consultation LireConsultation(int id) {
+		return consultationMapper.lireConsultation(id);
+	}
+	
+	public void MettreAjourConsultation(Consultation consultation) {
+		consultationMapper.mettreAjourConsultation(consultation);
+		System.out.println("La consultation est mis à jour avec succès !!!");
+	}
+	
+	public void SupprimerConsultation(int id) {
+		consultationMapper.supprimerConsultation(id);
+		System.out.println("Consultation supprimée avec succès !!!");
+	}
+	
+	public List<Consultation> getPatientId(int patient_id) {
+        return consultationMapper.PatientId(patient_id);
+    }
+	
 }
