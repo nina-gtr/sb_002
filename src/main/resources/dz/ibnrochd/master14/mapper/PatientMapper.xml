@@ -18,6 +18,11 @@
     <!--<select id="findPatientWithConsultationsById" resultMap="ResultMap" parameterType="java.lang.Integer" >
         SELECT * FROM cabinet.patient WHERE id = #{id}
     </select>-->
+    
+    <select id="selectAllPatient" resultMap="ResultMap">
+        SELECT * FROM cabinet.patient
+    </select>
+    
     <insert id="creerPatient" parameterType="dz.ibnrochd.master14.model.Patient" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO cabinet.patient (nom, prenom, sexe, date_naissance, numero_telephone, adresse) 
         VALUES (#{nom}, #{prenom}, #{sexe}, #{dateNaissance}, #{numeroTelephone}, #{adresse})

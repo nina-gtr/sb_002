@@ -29,4 +29,8 @@
 		WHERE id = #{id}
     </delete>
     
+    <select id="selectAllTraitement" resultMap="ResultMap">
+        SELECT * FROM cabinet.traitement
+    </select>
+    
 </mapper>

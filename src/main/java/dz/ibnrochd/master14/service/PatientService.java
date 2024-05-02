@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dz.ibnrochd.master14.mapper.PatientMapper;
+import dz.ibnrochd.master14.model.LigneConsultation;
 import dz.ibnrochd.master14.model.Patient;
 
 @Service
@@ -17,11 +18,12 @@ public class PatientService {
         this.patientMapper = patientMapper;
     }
 
-    public void ListePatients() {
+    public List<Patient> ListePatients() {
         List<Patient> patients = patientMapper.selectAllPatient();
         for (Patient patient : patients) {
             System.out.println("Patient N°" + patient.getId() + ": " + patient.getNom()); 
         }
+        return patients;
     }
     
     public void RechercherParNom(String nom) {

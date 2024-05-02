@@ -137,7 +137,7 @@ public class Sb002Application implements CommandLineRunner {
         }
 		
         
-     // TODO Ligne Consultation
+     // TODO Ligne Consultation 
      // Create
      LigneConsultation ligneconsultation = new LigneConsultation();
      ligneconsultation.setPosologie("2x /jour");
@@ -292,7 +292,7 @@ public class Sb002Application implements CommandLineRunner {
        System.out.println("Ce rendez-vous n'existe pas !!!");
    }  
      
-   // TODO Rendez-Vous
+   // TODO Traitement
    // Create
    Traitement traitement = new Traitement();
    traitement.setNom("Doliprane");  
